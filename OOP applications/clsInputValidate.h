@@ -7,7 +7,7 @@ class clsInputValidate
 
 public:
 
-   static bool IsNumberBetween(short value, short min, short max)
+   static bool IsNumberBetween(int value, int min, int max)
    {
       return (value >= min && value <= max);
    }
@@ -25,9 +25,13 @@ public:
    static bool isDateBetween(clsDate Date, clsDate Date1, clsDate Date2)
    {
       return
-      clsDate::IsDate1BeforeDate2(Date1, Date)?clsDate::IsDate1AfterDate2(Date2, Date)
-      :clsDate::IsDate1BeforeDate2(Date2, Date)?clsDate::IsDate1AfterDate2(Date1, Date)
-      :false;
+      clsDate::IsDate1BeforeDate2(Date1, Date) || clsDate::IsDate1EqualDate2(Date1, Date)?
+      clsDate::IsDate1AfterDate2(Date2, Date)  || clsDate::IsDate1EqualDate2(Date2, Date) 
+
+      :clsDate::IsDate1BeforeDate2(Date2, Date)|| clsDate::IsDate1EqualDate2(Date1, Date)?
+       clsDate::IsDate1AfterDate2(Date1, Date)  || clsDate::IsDate1EqualDate2(Date, Date)
+       :false; 
+      
    }
 
    static int readIntNumber(string msg)
@@ -44,7 +48,6 @@ public:
         return number;
    } 
 
-
    static int readDblNumber(string msg)
    {
         cout << "enter int number";
@@ -59,8 +62,34 @@ public:
         return number;
    } 
 
-   static int isIntbetween(int )
-   {
+   static int readIntNumberbetween( int min, int max, string msg)
+    {
+       
+        int number;
+        number = readIntNumber("enter int number\n");
 
+        while(!IsNumberBetween(number, min, max)) 
+        {
+            cout << msg << endl;
+            number = readIntNumber("enter int number\n");
+        }
+        return number;
    }
+
+   static int readDblNumberbetween( int min, int max, string msg)
+   {
+        int number;
+        do 
+        {
+          number = readIntNumber("enter int number\n");
+        }
+        while(IsNumberBetween(number, min, max));
+       return number;
+   }
+
+    static bool isValidDate(clsDate Date)
+    {
+         return clsDate::isValidDate(Date);
+    }
+
 };

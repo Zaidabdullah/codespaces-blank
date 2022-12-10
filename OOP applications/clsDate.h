@@ -46,7 +46,14 @@ class clsDate
           _Day   = now->tm_mday;    
       }
 
-      clsDate(string sDate)
+      clsDate(short day, int month, int year)
+      {	
+		_Day   = day;
+        _Month = month;
+		_Year  = year;
+	  }
+      
+	  clsDate(string sDate)
       {
           vector<string> vDate =  splitWords(sDate, "/");
           _Day   = stoi(vDate[0]);
