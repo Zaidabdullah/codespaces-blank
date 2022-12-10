@@ -59,5 +59,8 @@ public:
         return number;
    } 
 
+   static int isIntbetween(int )
+   {
 
+   }
 };
