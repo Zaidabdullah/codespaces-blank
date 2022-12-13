@@ -7,7 +7,7 @@ public:
 
     clsDate StartDate;
     clsDate EndDate;
-
+ 
     clsPeriod(clsDate StartDate, clsDate DateTo)
     {
         this->StartDate = StartDate;
