@@ -13,8 +13,10 @@ class clsBankClient : clsPerson
 
       static clsBankClient _convertLineToClintObject(string line)
       {
-          vector <clsBankClient> vClint = _splitLineToClientObject(line);
-          return _convertClintVectorToClintObject(vClint);
+          vector <clsBankClient> vClint = clsString::split(line);
+          
+          return clsBankClient(vClient[0], vClient[1], vClient[2], vClient[3],vClint[4],
+                               vClient[5], vClient[6], vClient[7]);
 
       }
     
