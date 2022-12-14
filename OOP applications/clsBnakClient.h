@@ -1,17 +1,22 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 
 class clsBankClient : clsPerson
 {
    private:
-     string _Account_ID;
-     string _PinCode;
-     int _balance;
-     _convertLineToClintObject()
-     {
+      string _Account_ID;
+      string _PinCode;
+      int _balance;
 
-     }
+      static clsBankClient _convertLineToClintObject(string line)
+      {
+          vector <clsBankClient> vClint = splitLineToClientObject(line);
+          return convertClintVectorToClintObject(vClint);
+
+      }
     
     
     public:
