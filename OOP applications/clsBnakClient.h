@@ -8,8 +8,11 @@ class clsBankClient : clsPerson
      string _Account_ID;
      string _PinCode;
      int _balance;
-     _convert(){}
-     _fun(){}
+     _convertLineToClintObject()
+     {
+
+     }
+    
     
     public:
       clsBankClient(string FirstName, string LastName, string Email, string PhoneNumber
@@ -57,10 +60,49 @@ class clsBankClient : clsPerson
           cout << "balance "      << balance()    << endl;
       }
 
-    static find(string acount ID)
-    {
-        
-    }
+      static clsBankClient find(string acount_ID)
+      {
+          fstream myFile;
+          myFile.open("client.txt", ios::in);
+          if(myFile.is_opren())
+          {  
+            string line;
+            while(getline(myFile, line))
+            {
+              clsBankClient bankClient = _convertLineToClintObject(line)
+              if(acount_ID == bankClient.Account_ID())
+              {
+                return bankClient;
+              }
+            }
+            myFile.close();
+          }
+          return EmptyClientObj();
+      }
+
+      static clsBankClient find(string acount_ID, string PinCode)
+      {
+          fstream myFile;
+          myFile.open("client.txt", ios::in);
+          if(myFile.is_opren())
+          {  
+            string line;
+            while(getline(myFile, line))
+            {
+              clsBankClient bankClient = _convertLineToClintObject(line)
+              if(acount_ID == bankClient.Account_ID() && PinCode == bankClient.PinCode())
+              {
+                return bankClient;
+              }
+            }
+            myFile.close();
+          }
+          return EmptyClientObj();
+      }
+
+
+
+
 
 
 
